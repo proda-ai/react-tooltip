@@ -694,14 +694,8 @@ class ReactTooltip extends React.Component {
 
   // Calculation the position
   updatePosition() {
-    const {
-      currentEvent,
-      currentTarget,
-      place,
-      desiredPlace,
-      effect,
-      offset
-    } = this.state;
+    const { currentEvent, currentTarget, place, desiredPlace, effect, offset } =
+      this.state;
     const node = this.tooltipRef;
     const result = getPosition(
       currentEvent,

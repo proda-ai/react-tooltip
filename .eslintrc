@@ -1,6 +1,13 @@
 {
-  "parser": "babel-eslint",
-  "extends": ["standard", "standard-jsx", "standard-react", "plugin:prettier/recommended"],
+  parser: '@babel/eslint-parser',
+  "extends":
+    [ "standard"
+    , "standard-jsx"
+    , "standard-react"
+    , "plugin:prettier/recommended"
+    , "plugin:react/jsx-runtime"
+    , "plugin:react/recommended"
+    ],
   "env": {
     "es6": true,
     "jest": true
@@ -12,6 +19,10 @@
     "ecmaFeatures": {
       "impliedStrict": true,
       "jsx": true
+    },
+    "requireConfigFile": false,
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
     }
   },
   "rules": {

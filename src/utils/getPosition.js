@@ -125,9 +125,8 @@ const getCurrentOffset = (e, currentTarget, effect) => {
   const boundingClientRect = currentTarget.getBoundingClientRect();
   const targetTop = boundingClientRect.top;
   const targetLeft = boundingClientRect.left;
-  const { width: targetWidth, height: targetHeight } = getDimensions(
-    currentTarget
-  );
+  const { width: targetWidth, height: targetHeight } =
+    getDimensions(currentTarget);
 
   if (effect === 'float') {
     return {
