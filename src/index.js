@@ -582,10 +582,11 @@ class ReactTooltip extends React.Component {
             show: true
           },
           () => {
-            this.updatePosition();
-            if (isInvisible && afterShow) {
-              afterShow(e);
-            }
+            this.updatePosition(() => {
+              if (isInvisible && afterShow) {
+                afterShow(e);
+              }
+            });
           }
         );
       }
@@ -693,7 +694,7 @@ class ReactTooltip extends React.Component {
   }
 
   // Calculation the position
-  updatePosition() {
+  updatePosition(callbackAfter) {
     const { currentEvent, currentTarget, place, desiredPlace, effect, offset } =
       this.state;
     const node = this.tooltipRef;
@@ -722,9 +723,11 @@ class ReactTooltip extends React.Component {
     if (result.isNewState) {
       // Switch to reverse placement
       return this.setState(result.newState, () => {
-        this.updatePosition();
+        this.updatePosition(callbackAfter);
       });
     }
+
+    callbackAfter();
 
     // Set tooltip position
     node.style.left = result.position.left + 'px';
