@@ -426,7 +426,7 @@ class ReactTooltip extends React.Component {
       e,
       e.currentTarget,
       this.tooltipRef,
-      desiredPlace,
+      desiredPlace.split(',')[0],
       desiredPlace,
       effect,
       offset
@@ -444,7 +444,9 @@ class ReactTooltip extends React.Component {
       );
     }
 
-    const place = result.isNewState ? result.newState.place : desiredPlace;
+    const place = result.isNewState
+      ? result.newState.place
+      : desiredPlace.split(',')[0];
 
     // To prevent previously created timers from triggering
     this.clearTimer();
